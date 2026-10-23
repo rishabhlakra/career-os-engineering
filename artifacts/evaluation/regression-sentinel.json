@@ -1,0 +1,16 @@
+{
+  "artifact": "material_regression_sentinel",
+  "recorded_at": "2026-05-21",
+  "fixture_pairs": 3,
+  "material_types": [
+    "cover_letter",
+    "resume",
+    "recruiter_message"
+  ],
+  "files_compared": 9,
+  "comparison": "byte_for_byte",
+  "result": "pass",
+  "development_cycles_observed": "16+",
+  "interpretation": "The same fixed inputs produced unchanged material after the recorded change.",
+  "limitation": "Repeatability does not prove correctness or writing quality."
+}

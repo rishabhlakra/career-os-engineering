@@ -1,0 +1,23 @@
+{
+  "artifact": "ingestion_snapshot",
+  "recorded_at": "2026-05-23",
+  "scope": "development corpus at the live migration checkpoint",
+  "jobs": 1943,
+  "companies": 527,
+  "configured_sources": 49,
+  "adapter_types": [
+    "Bundesagentur",
+    "Greenhouse",
+    "Lever",
+    "SmartRecruiters",
+    "Ashby",
+    "Arbeitnow",
+    "Personio",
+    "RSS"
+  ],
+  "notes": [
+    "Counts describe one recorded snapshot, not current corpus size.",
+    "Jobs were counted after normalization and deduplication.",
+    "Company count depends on the normalization state at this checkpoint."
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "artifact": "pre_user_security_review",
+  "recorded_at": "2026-06-05",
+  "scope": [
+    "FastAPI authentication",
+    "multi-user data access",
+    "SPA static-file fallback",
+    "CORS configuration",
+    "secret handling"
+  ],
+  "fixed_findings": [
+    {
+      "severity": "critical",
+      "category": "path_containment",
+      "resolution": "Resolved and verified static-file paths against the distribution directory before serving."
+    },
+    {
+      "severity": "high",
+      "category": "cross_tenant_founder_state",
+      "resolution": "Protected founder-local endpoints from authenticated multi-user access and verified 403 responses."
+    },
+    {
+      "severity": "medium",
+      "category": "cors_configuration",
+      "resolution": "Replaced wildcard-plus-credentials configuration with environment-driven allowed origins."
+    }
+  ],
+  "accepted_low_risk_items": [
+    "Verified UUIDs are interpolated into PostgREST filters; encode if raw identifiers are ever accepted.",
+    "Token verification currently performs a Supabase network round trip per authenticated request."
+  ],
+  "verification": {
+    "two_user_isolation": "pass",
+    "founder_local_routes_blocked_for_external_users": "pass",
+    "path_traversal_regression": "pass",
+    "smoke_suite": "pass"
+  },
+  "limitation": "This was a pre-user engineering review, not a penetration test or compliance certification."
+}

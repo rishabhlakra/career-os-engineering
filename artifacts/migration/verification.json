@@ -1,0 +1,28 @@
+{
+  "artifact": "sqlite_to_supabase_migration_verification",
+  "recorded_at": "2026-05-23",
+  "region": "eu-central-1",
+  "rows_by_table": {
+    "profiles": 1,
+    "skills": 50,
+    "jobs": 1943,
+    "job_status": 1943,
+    "job_outcomes": 0,
+    "job_actions": 2023,
+    "rejection_events": 6709
+  },
+  "stated_total_rows": 12669,
+  "checks": {
+    "per_table_row_count_parity": true,
+    "job_signature_spot_checks": 10,
+    "row_level_security_isolation": "pass",
+    "foreign_key_aware_ordering": true,
+    "unix_epoch_dates_normalized": 230,
+    "orphan_job_actions_filtered": 11,
+    "orphan_rejection_event_job_ids_nulled": true
+  },
+  "notes": [
+    "The total is recomputed from rows_by_table by the public verifier.",
+    "Record contents, project identifiers, and credentials are not published."
+  ]
+}

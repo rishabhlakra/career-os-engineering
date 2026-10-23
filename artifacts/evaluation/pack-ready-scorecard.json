@@ -1,0 +1,50 @@
+{
+  "artifact": "pack_ready_scorecard",
+  "recorded_at": "2026-05-21",
+  "harness": {
+    "total_cells": 24,
+    "synthetic_profiles": 4,
+    "role_families": [
+      "software",
+      "data_ml",
+      "qa_test",
+      "devops_cloud",
+      "infra_other"
+    ],
+    "fit_strengths": [
+      "strong",
+      "stretch",
+      "weak"
+    ]
+  },
+  "readiness_analysis": {
+    "visible_cells_reviewed": 10,
+    "pack_ready_cells": 6,
+    "visible_not_pack_ready_cells": 4,
+    "cells_passing_all_material_bars": 5,
+    "pass_rate_on_pack_ready_cells": 0.8333,
+    "profile_evidence_minimum": 6,
+    "job_description_character_minimum": 2000
+  },
+  "pack_ready_average_scores_out_of_5": {
+    "cover_letter": 3.98,
+    "resume": 4.27,
+    "recruiter_message": 5.0
+  },
+  "recorded_product_surface": {
+    "visible_roles": 156,
+    "pack_ready_roles": 124,
+    "pack_ready_ratio": 0.7949
+  },
+  "known_limitation": {
+    "fixture": "P3-data_ml-strong",
+    "cover_letter_score": 3.86,
+    "reason": "Only one employer surfaced in the cover letter; improving the selector risked regression in fixed reference packs.",
+    "disposition": "retained as a named failure rather than removed from the average"
+  },
+  "notes": [
+    "Scores come from an internal fixed rubric, not an external benchmark.",
+    "Synthetic profiles contain no customer records.",
+    "Readiness filtering is evaluated separately from relevance."
+  ]
+}

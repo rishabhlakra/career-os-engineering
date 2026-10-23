@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/rishabhlakra/career-os-engineering/artifacts/contracts/public-fit-payload.schema.json",
+  "title": "Career OS public fit payload",
+  "description": "The score-free fit object returned to the product UI.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "tier",
+    "explanation",
+    "matched",
+    "gap",
+    "gaps",
+    "language"
+  ],
+  "properties": {
+    "tier": {
+      "type": "string",
+      "enum": [
+        "match",
+        "reachable_reach",
+        "aspirational"
+      ]
+    },
+    "explanation": {
+      "type": "string",
+      "minLength": 1
+    },
+    "matched": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "gap": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "gaps": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "language": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "intentionally_omitted": [
+    "raw similarity",
+    "ranking weights",
+    "internal seniority label"
+  ]
+}
