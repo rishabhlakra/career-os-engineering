@@ -123,6 +123,15 @@ These are development artifacts, not customer or production-usage claims.
 
 The repository runs a small verifier in CI. It parses every public artifact, recomputes the migration total, checks score bounds and evaluation arithmetic, and validates local documentation links.
 
+## Selected code
+
+I published two small backend excerpts rather than an artificial demo application:
+
+- [Location normalization](code_sample/location.py) handles spelling variants, Germany-specific remote roles, ambiguous regions, and non-German DACH locations conservatively.
+- [Public fit boundary](code_sample/public_fit.py) turns an internal assessment into the score-free payload used by the interface. Its tests verify that similarity, ranking weight, and the internal seniority label cannot leak through that mapper.
+
+The [sample notes and tests](code_sample/README.md) explain the boundary. The retrieval model, ranker, source adapters, profile evidence, and application-material code remain private.
+
 ## Repository guide
 
 ```text
@@ -139,6 +148,10 @@ docs/
   infrastructure.md
   relevance-and-fit.md
   verification.md
+code_sample/
+  location.py         Conservative location normalization
+  public_fit.py       Internal-to-public API boundary
+  test_*.py           Dependency-free unit tests
 scripts/
   verify_public_artifacts.py
 ```

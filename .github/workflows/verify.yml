@@ -16,3 +16,4 @@ jobs:
         with:
           python-version: "3.12"
       - run: python scripts/verify_public_artifacts.py
+      - run: python -m unittest discover -s code_sample -p "test_*.py"
