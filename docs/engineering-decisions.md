@@ -1,5 +1,7 @@
 # Engineering decisions
 
+These are the decisions that materially changed the implementation. The list is selective; it is not a reconstructed design document.
+
 ## 1. Separate relevance from eligibility
 
 **Problem:** A semantically similar job may still be impractical because of geography, language, seniority, or employment constraints.

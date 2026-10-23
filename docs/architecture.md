@@ -79,3 +79,5 @@ The stored prediction snapshot contains internal fields such as fit class, simil
 ## Private/public split
 
 The public repository contains data contracts, aggregate evaluation summaries, and architecture notes. It omits the source corpus, production code, weighting logic, prompts, personal records, private schemas, and deployment secrets.
+
+The working code is split across a Python repository and a Next.js repository. The Python side contains the ingestion adapters, ranking service, eligibility and language rules, application-material pipeline, FastAPI routes, and Supabase storage layer. The Next.js side contains the four workflow rooms, authentication, typed API clients, and browser-level tests. The module-level mapping is listed in the root README so the public diagrams can be checked against an actual implementation shape without publishing the private source.

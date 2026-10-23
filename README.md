@@ -1,12 +1,14 @@
-# Career OS
+# Career OS — public case study
 
-Career OS is the private job-search workspace I wanted while looking for software roles in Germany: a short ranked list, a defensible explanation of fit, application material that cannot invent experience, and a record of what happened afterwards.
+Career OS is a private job-search product I built while looking for software roles in Germany. It ranks a limited set of jobs, shows why each one does or does not fit, prepares application material from approved profile facts, and keeps the later outcome attached to the original decision.
+
+> I opened this public repository in October 2026. The product itself was developed in private repositories; GitHub's repository creation date is the publication date of this case study, not the start of the project.
 
 [![Public evidence checks](https://github.com/rishabhlakra/career-os-engineering/actions/workflows/verify.yml/badge.svg)](https://github.com/rishabhlakra/career-os-engineering/actions/workflows/verify.yml)
 
 The application source is private because it contains profile data, application history, source corpora, and ranking logic I do not want to publish as a template. This repository is the public engineering record: architecture, infrastructure, data contracts, evaluation summaries, and sanitized artifacts generated from the private build.
 
-## Product shape
+## Main workflows
 
 I kept the interface to four rooms. Each one answers one question.
 
@@ -17,7 +19,7 @@ I kept the interface to four rooms. Each one answers one question.
 | **Application** | Can I send this without overstating my background? | A resume variant, cover letter, and recruiter note are assembled from approved profile evidence. |
 | **Career Memory** | What happened, and what should change? | Decisions, applications, outcomes, and the prediction made at decision time are stored together. |
 
-The product does not submit applications. It prepares the work, shows its reasoning, and leaves the consequential action with the user.
+The product does not submit applications. It prepares the work and leaves the final action with the user.
 
 ## System overview
 
@@ -64,6 +66,21 @@ The prepared private-beta deployment keeps the corpus and personal state apart. 
 
 [Read the infrastructure notes →](docs/infrastructure.md)
 
+## Private implementation map
+
+The source stays private, but the public architecture maps to concrete modules in the working repositories.
+
+| Concern | Private implementation |
+|---|---|
+| ATS ingestion | `pipeline/ingestion/personio.py`, `greenhouse.py`, `lever.py`, `recruitee.py`, `smartrecruiters.py`, `ashby.py`, `arbeitnow.py`, `ba.py` |
+| Retrieval | `pipeline/match/embeddings.py`, `pipeline/relevance.py`, `pipeline/ranking_service.py` |
+| Fit context | `pipeline/seniority.py`, `pipeline/language_gate.py`, `pipeline/eligibility.py`, `pipeline/profile_context.py` |
+| Application material | `pipeline/tailoring.py`, `pipeline/resume_template_engine.py`, `pipeline/trust.py` |
+| API | `api/main.py` and route modules for discovery, jobs, profiles, packs, and statistics |
+| User state | `pipeline/supabase_store.py` plus row-level-security policies in Supabase |
+| Evaluation | fixed-profile scripts under `scripts/` and scorecards under `eval/` |
+| Web client | Next.js routes for Today, Opportunity, Application, Career Memory, onboarding, and authentication |
+
 ## Engineering work
 
 ### Retrieval that respects hard context
@@ -84,7 +101,7 @@ The live migration report lists 12,669 rows across profiles, skills, jobs, job s
 
 [Inspect the sanitized migration artifact →](artifacts/migration/verification.json)
 
-### Evaluation designed to expose bad behaviour
+### Evaluation setup
 
 The generalisation harness crosses four synthetic profiles with five role families and strong, stretch, and weak fit cases. A later readiness analysis identified six pack-ready cells; five cleared all three material bars. One remaining failure is kept in the record rather than averaged away.
 
@@ -135,7 +152,7 @@ scripts/
 - **Prepared beta delivery:** Dockerized API for Railway, Next.js frontend for Vercel
 - **Verification:** Vitest, Playwright, integration tests, fixed evaluation matrices, deterministic regression comparison
 
-## Public boundary
+## What is not published
 
 This repository does not contain the production source, resumes, application records, prompts, ranking weights, private schemas, source corpus, secrets, or deployment credentials. The artifacts are deliberately narrow enough to inspect the engineering without recreating the private product or exposing personal data.
 
